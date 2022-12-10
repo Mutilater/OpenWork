@@ -24,15 +24,15 @@ CONNECT BY LEVEL<=regexp_count(lower(job_action), '(\.p_start_group\(\s*\d+\s*\)
 SELECT etl_type
 , REGEXP_REPLACE(start_group_str, '(\D)', '') AS etl_group
 FROM start_group_list
-/* Вывод
+/* Output
 OLD	10
 NEW	34
 NEW	38
   */
 
---Дальше джойним настройки ETL для получения  потоков/воркеров/порядка/источников/ приемников и к ним уже джойним логи за определенный интервал
---Вот и готова простейшая система мониторинга
---Дальше будем дорабатывать
+--After join etl_table_list for get  flow/worker/order/src_full_name/dest_full_name/full_proc_name
+--And let's ok!
+--Enjoy!
 
 
 
