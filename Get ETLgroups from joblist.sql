@@ -22,8 +22,17 @@ FROM job_list
 CONNECT BY LEVEL<=regexp_count(lower(job_action), '(\.p_start_group\(\s*\d+\s*\)\s*;)')
 )
 SELECT etl_type
-, REGEXP_REPLACE(start_group_str, '(\D)', '') AS etl_group 
-
+, REGEXP_REPLACE(start_group_str, '(\D)', '') AS etl_group
 FROM start_group_list
---SELECT regexp_count(lower(job_action), '(start_group\(\d+\))(;)') FROM  job_list
+/* Вывод
+OLD	10
+NEW	34
+NEW	38
+  */
+
+--Дальше джойним настройки ETL для получения  потоков/воркеров/порядка/источников/ приемников и к ним уже джойним логи за определенный интервал
+--Вот и готова простейшая система мониторинга
+--Дальше будем дорабатывать
+
+
 
